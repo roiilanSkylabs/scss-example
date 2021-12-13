@@ -1,0 +1,131 @@
+
+//examples
+
+// 1. variable- shadow
+.submit, h1{
+            // box-shadow:  5px 5px 9px 2px #00000026;
+            box-shadow: $shadow3;
+        }
+
+
+
+// 2. mixin with arguments + darken() / lighten () functions
+.submit {
+  @include submit-btn (6.5px,#ffffff,#1e8a3b,24px) ; //$border-radius ,$color, $background-color ,$font-size 
+  padding: rem(12px) rem(36px);  
+}
+  
+// 3. mixin- BREAKPOINTS + variable
+@include for-mobile-layout {
+    body {
+        background-color: $clr3;
+    }
+}
+
+
+// 4. functions, rem() function
+
+// .s2 p {
+// font-size: double($html-font-size)
+// }
+
+
+// .box p {
+// font-size: 16px;
+// border: calc(16px / 4) $clr3 solid; 
+// padding: 16px 5px;
+// }
+
+// .box p {
+// font-size: 1rem;
+// border: 0.25rem $clr3 solid; 
+// padding: 1rem 5px;
+// }
+
+.box p, .s2 p {
+font-size: rem(16px);
+border: rem(4px) $clr3 solid; 
+padding:rem(16px) rem(5px);
+}
+
+ 
+
+
+
+// 5. keyframe -  slide-down  + heart image
+
+//  types of " animation-timing-function " : 
+      // ease - Specifies an animation with a slow start, then fast, then end slowly (this is default)
+      // linear - Specifies an animation with the same speed from start to end
+      // ease-in - Specifies an animation with a slow start
+      // ease-out - Specifies an animation with a slow end
+      // ease-in-out - Specifies an animation with a slow start and end
+
+
+// https://www.youtube.com/watch?v=ephXLtmQH-Y&ab_channel=EnjoyableProgramming
+
+.container{
+    position: relative;
+    height: 30em;
+    width: 100%;
+  }  
+  
+  .heart-emoji{
+    background-color: $heart-emoji-color;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    position: absolute;
+    top: calc(50% - 37.5px);
+    left: calc(50% - 37.5px);
+  }
+  
+  .heart-shape {
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    width: 75px;
+    height: 75px;
+    
+    animation: heart-beat 2s linear infinite alternate;
+
+    // animation-name:  heart-beat;
+    // animation-duration: 1s;
+    // animation-timing-function: linear;    // ease , linear , ease-in , ease-out , ease-in-out
+    // animation-iteration-count: infinite;  // 1 , 2 , 3 , infinite
+    // animation-direction: alternate;      // normal , reverse , alternate , alternate-reverse
+
+      
+    &:before, &:after{
+      left: calc(50% - 15px);
+      top: calc(50% - 22px);
+      position: absolute;
+      content: "";
+      width: 30px;
+      height: 50px;
+      background-color: white;
+      border-radius: 20px 20px 0 0;
+    }
+  
+    &:before{
+      transform: translate(15px) rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+  
+    &:after{
+      transform: translate(-15px) rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  }
+  
+
+.slide-down {
+  animation: slide-down 6s ease-in-out both;
+}
+    
+    
+// end heart image exapmles
+    
+
+
+
+
